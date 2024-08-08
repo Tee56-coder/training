@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Exercises</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding-bottom: 110px;
+      }
+
+      .subscribe-button {
+        background-color: black;
+        color: white;
+        border: none;
+
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        border-radius: 50px;
+        font-weight: 700;
+
+        cursor: pointer;
+        margin-bottom: 35px;
+      }
+
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+
+      .cost-input {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+      }
+
+      .calculate-button {
+        background-color: green;
+        color: white;
+        border: none;
+
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      .rock-paper-scissors-title {
+        margin-top: 55px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button class="subscribe-button js-subscribe-button"
+      onclick="subscribe()">
+      Subscribe
+    </button>
+
+    <p class="shipping-calculator-title">Amazon Shipping Calculator</p>
+    <p>
+      Orders under $40 = +$10 shipping.<br>
+    </p>
+    <p>
+      Orders over $40 = FREE shipping.
+    </p>
+    <p>
+      <input placeholder="Cost of order"
+        class="cost-input js-cost-input"
+        onkeydown="handleCostInputKeydown(event)">
+      <button class="calculate-button"
+        onclick="calculateTotal()">
+        Calculate
+      </button>
+    </p>
+    <p class="js-total"></p>
+
+    <p class="rock-paper-scissors-title">Rock Paper Scissors</p>
+    <a href="https://supersimple.dev/projects/rock-paper-scissors">
+      Click here
+    </a>
+
+    <script>
+      function handleCostInputKeydown(event) {
+        const key = event.key;
+
+        if (key === 'Enter') {
+          calculateTotal();
+        } else if (key === 'Escape') {
+          document.querySelector('.cost-input').value = '';
+        }
+      }
+
+      function subscribe() {
+        const subscribeButton = document.querySelector('.js-subscribe-button');
+
+        if (subscribeButton.classList.contains('is-subscribed')) {
+          subscribeButton.innerHTML = 'Subscribe';
+          subscribeButton.classList.remove('is-subscribed');
+
+        } else {
+          subscribeButton.innerHTML = 'Subscribed';
+          subscribeButton.classList.add('is-subscribed');
+        }
+      }
+
+      function calculateTotal() {
+        const inputElement = document.querySelector('.js-cost-input');
+        const cost = Number(inputElement.value) * 100;
+
+        if (cost < 3500) {
+          document.querySelector('.js-total')
+            .innerHTML = `$${(cost + 1000) / 100}`;
+        } else {
+          document.querySelector('.js-total')
+            .innerHTML = `$${cost / 100}`;
+        }
+      }
+    </script>
+  </body>
+</html>
