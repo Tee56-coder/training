@@ -7,13 +7,16 @@
 </head>
 <body style="display: flex; flex-direction: column; justify-content: start; align-items: center; padding-top: 12rem;">
     <p>subscribe button</p>
-    <button onclick=" 
-    var buttonElement = document.querySelector('.subBtn');
-    if(buttonElement.innerHTML === 'subscribe' ){
-        buttonElement.innerHTML === 'subscribed';
-    } else{
-        buttonElement.innerHTML === 'subscribe';
-    }
-    " class="subBtn">subscribe</button>
+    <button onclick = "subscribe()" class="subBtn">subscribe</button>
+    <script>
+       function subscribe () {
+        const buttonElemnt = document.querySelector('.subBtn');
+        if(buttonElemnt.innerText === 'subscribe'){
+            buttonElemnt.innerHTML = 'subscribed';
+        } else{
+            buttonElemnt.innerHTML = 'subscribe';
+        }
+       }
+    </script>
 </body>
 </html>
